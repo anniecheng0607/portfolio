@@ -1,0 +1,977 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="description" content="Annie Cheng — design portfolio spanning scenic design, immersive media, and visual storytelling.">
+  <title>Annie Cheng — Portfolio</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500;1,600&family=Courier+Prime:ital,wght@0,400;0,700;1,400&family=DM+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --ink: #30393c;
+      --ink-soft: #5f6b6f;
+      --blue-gray: #aebfc5;
+      --blue-gray-deep: #778b93;
+      --blue-gray-light: #dbe4e6;
+      --paper: #f2f0e9;
+      --paper-warm: #e9e2d2;
+      --paper-cool: #e8eceb;
+      --line: rgba(48, 57, 60, 0.24);
+      --shadow: 0 18px 45px rgba(53, 65, 68, 0.11);
+      --mono: "DM Mono", "Courier New", monospace;
+      --typewriter: "Courier Prime", "Courier New", monospace;
+      --display: "Cormorant Garamond", Georgia, serif;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      overflow-x: hidden;
+      color: var(--ink);
+      background:
+        radial-gradient(circle at 20% 15%, rgba(255,255,255,.58) 0 1px, transparent 1.5px),
+        radial-gradient(circle at 78% 38%, rgba(70,80,82,.04) 0 1px, transparent 1.4px),
+        linear-gradient(180deg, #e4eaeb 0%, #d9e1e2 42%, #e8e9e5 100%);
+      background-size: 24px 24px, 31px 31px, auto;
+      font-family: var(--typewriter);
+      line-height: 1.65;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      opacity: .34;
+      mix-blend-mode: multiply;
+      background:
+        repeating-linear-gradient(0deg, rgba(55,65,68,.018) 0 1px, transparent 1px 4px),
+        repeating-linear-gradient(90deg, rgba(55,65,68,.012) 0 1px, transparent 1px 6px);
+      z-index: 20;
+    }
+
+    img,
+    video,
+    iframe {
+      display: block;
+      max-width: 100%;
+    }
+
+    img {
+      width: 100%;
+      height: auto;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .skip-link {
+      position: absolute;
+      left: 1rem;
+      top: -4rem;
+      z-index: 100;
+      background: var(--ink);
+      color: white;
+      padding: .7rem 1rem;
+    }
+
+    .skip-link:focus {
+      top: 1rem;
+    }
+
+    .site-header,
+    main,
+    .site-footer {
+      width: min(1180px, calc(100% - 40px));
+      margin-inline: auto;
+    }
+
+    .site-header {
+      padding-top: 22px;
+    }
+
+    .topbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      min-height: 58px;
+      border-top: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+      font-family: var(--mono);
+      font-size: .72rem;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+    }
+
+    .wordmark {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      min-width: 0;
+      font-weight: 500;
+    }
+
+    .brand-logo {
+      width: 38px;
+      height: 38px;
+      object-fit: contain;
+      flex: 0 0 auto;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: clamp(16px, 3vw, 42px);
+      white-space: nowrap;
+    }
+
+    .nav-links a,
+    .wordmark,
+    .paper-link,
+    .site-footer a {
+      transition: opacity .2s ease, transform .2s ease;
+    }
+
+    .nav-links a:hover,
+    .wordmark:hover,
+    .paper-link:hover,
+    .site-footer a:hover {
+      opacity: .58;
+    }
+
+    .hero-shell {
+      min-height: 620px;
+      display: grid;
+      grid-template-columns: minmax(0, 1.4fr) minmax(260px, .6fr);
+      gap: clamp(36px, 7vw, 110px);
+      align-items: center;
+      padding: clamp(58px, 9vw, 120px) clamp(8px, 2vw, 24px) 72px;
+    }
+
+    .eyebrow,
+    .section-label,
+    .meta,
+    .project-kicker,
+    .footer-label,
+    .typed-small,
+    .hero-card__label,
+    .mini-card span {
+      font-family: var(--mono);
+      font-size: .68rem;
+      line-height: 1.4;
+      letter-spacing: .13em;
+      text-transform: uppercase;
+    }
+
+    .eyebrow {
+      margin: 0 0 20px;
+      color: var(--blue-gray-deep);
+    }
+
+    .hero-copy {
+      animation: rise-in .8s ease both;
+    }
+
+    .hero-copy h1 {
+      margin: 0;
+      font-family: var(--typewriter);
+      font-size: clamp(4.8rem, 10.8vw, 9.8rem);
+      line-height: .78;
+      letter-spacing: -.075em;
+      font-weight: 700;
+    }
+
+    .hero-intro {
+      max-width: 660px;
+      margin: 42px 0 28px;
+      color: var(--ink-soft);
+      font-size: clamp(.92rem, 1.35vw, 1.08rem);
+    }
+
+    .paper-link {
+      display: inline-block;
+      padding: 8px 3px 6px;
+      border-bottom: 1px solid var(--ink);
+      font-family: var(--mono);
+      font-size: .78rem;
+      letter-spacing: .06em;
+      text-transform: lowercase;
+    }
+
+    .hero-card {
+      position: relative;
+      justify-self: end;
+      width: min(330px, 100%);
+      min-height: 335px;
+      padding: 30px 28px 26px;
+      background: rgba(242, 240, 233, .88);
+      border: 1px solid rgba(48,57,60,.16);
+      box-shadow: var(--shadow);
+      transform: rotate(1.4deg);
+      animation: float-card 6s ease-in-out infinite;
+    }
+
+    .hero-card::before,
+    .project-media::before {
+      content: "";
+      position: absolute;
+      left: 50%;
+      top: -14px;
+      width: 92px;
+      height: 30px;
+      transform: translateX(-50%) rotate(-2deg);
+      background: rgba(218, 215, 202, .76);
+      border-left: 1px solid rgba(95,95,80,.08);
+      border-right: 1px solid rgba(95,95,80,.08);
+      box-shadow: inset 0 0 12px rgba(255,255,255,.38);
+      z-index: 2;
+    }
+
+    .hero-card__label {
+      display: block;
+      padding-bottom: 22px;
+      margin-bottom: 30px;
+      border-bottom: 1px dashed var(--line);
+      color: var(--ink-soft);
+    }
+
+    .hero-card p {
+      margin: 9px 0;
+      font-family: var(--mono);
+      font-size: .82rem;
+      letter-spacing: .05em;
+    }
+
+    .hero-card__stamp {
+      position: absolute;
+      right: 22px;
+      bottom: 22px;
+      display: inline-grid;
+      place-items: center;
+      width: 90px;
+      height: 90px;
+      border: 1px solid rgba(119,139,147,.55);
+      border-radius: 50%;
+      color: var(--blue-gray-deep);
+      font-family: var(--mono);
+      font-size: .68rem;
+      line-height: 1.2;
+      letter-spacing: .08em;
+      text-align: center;
+      transform: rotate(-8deg);
+    }
+
+    .about-section,
+    .work-section {
+      padding: 30px 0 120px;
+    }
+
+    .section-label {
+      width: 100%;
+      padding: 10px 0;
+      border-top: 1px solid var(--line);
+      color: var(--ink-soft);
+    }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.25fr) minmax(270px, .75fr);
+      gap: clamp(36px, 7vw, 90px);
+      align-items: center;
+    }
+
+    .about-note {
+      position: relative;
+      width: min(720px, 100%);
+      transform: rotate(-.7deg);
+      transition: transform .35s ease;
+    }
+
+    .about-note:hover {
+      transform: rotate(-.25deg) translateY(-3px);
+    }
+
+    .about-note img {
+      filter: saturate(.75) contrast(.95);
+    }
+
+    .about-note__text {
+      position: absolute;
+      left: 14.5%;
+      right: 14.5%;
+      top: 43%;
+      color: #4b4a43;
+      font-size: clamp(.72rem, 1.15vw, .96rem);
+      line-height: 1.55;
+    }
+
+    .about-note__text p {
+      margin: 0 0 .75em;
+    }
+
+    .typed-small {
+      margin-bottom: 1em !important;
+      color: #7e7a6c;
+    }
+
+    .about-side {
+      display: grid;
+      gap: 24px;
+    }
+
+    .mini-card {
+      position: relative;
+      padding: 24px 24px 22px;
+      border: 1px solid rgba(48,57,60,.14);
+      box-shadow: 0 11px 24px rgba(53,65,68,.07);
+      transition: transform .3s ease, box-shadow .3s ease;
+    }
+
+    .mini-card:hover {
+      transform: translateY(-4px) rotate(0deg);
+      box-shadow: 0 16px 30px rgba(53,65,68,.1);
+    }
+
+    .mini-card::after {
+      content: "";
+      position: absolute;
+      width: 18px;
+      height: 18px;
+      right: 17px;
+      top: 17px;
+      border-radius: 50%;
+      border: 1px solid rgba(48,57,60,.22);
+    }
+
+    .mini-card--blue {
+      background: rgba(190, 205, 210, .74);
+      transform: rotate(1deg);
+    }
+
+    .mini-card--gray {
+      background: rgba(229, 230, 225, .92);
+      transform: rotate(-1.1deg);
+    }
+
+    .mini-card span {
+      display: block;
+      margin-bottom: 14px;
+      color: var(--ink-soft);
+    }
+
+    .mini-card strong {
+      font-size: .95rem;
+      font-weight: 400;
+    }
+
+    .project {
+      position: relative;
+      display: grid;
+      grid-template-columns: minmax(0, 1.45fr) minmax(260px, .55fr);
+      column-gap: clamp(30px, 6vw, 88px);
+      row-gap: 30px;
+      padding: 48px 0 110px;
+      border-top: 1px solid var(--line);
+    }
+
+    .project-topline {
+      grid-column: 1 / -1;
+      display: grid;
+      grid-template-columns: 72px minmax(0, 1fr);
+      gap: 18px;
+      align-items: start;
+    }
+
+    .project-number {
+      font-family: var(--mono);
+      font-size: .75rem;
+      color: var(--blue-gray-deep);
+      padding-top: .72em;
+    }
+
+    .project h3 {
+      margin: 0;
+      max-width: 100%;
+      font-family: var(--display);
+      font-size: clamp(2.15rem, 4.15vw, 3.95rem);
+      line-height: .98;
+      letter-spacing: -.035em;
+      font-weight: 600;
+    }
+
+    .project-title--single-line {
+      white-space: nowrap;
+      font-size: clamp(2rem, 3.75vw, 3.7rem) !important;
+    }
+
+    .meta {
+      margin: 15px 0 0;
+      color: #4c595d;
+      font-size: clamp(.72rem, .9vw, .82rem);
+      font-weight: 500;
+      line-height: 1.55;
+      letter-spacing: .08em;
+    }
+
+    .project-media {
+      position: relative;
+      width: 100%;
+      margin: 18px 0 0;
+      padding: 18px 18px 12px;
+      background: rgba(244, 243, 238, .9);
+      border: 1px solid rgba(48,57,60,.15);
+      box-shadow: var(--shadow);
+      align-self: start;
+      transition: transform .32s ease, box-shadow .32s ease;
+    }
+
+    .project:nth-of-type(even) .project-media {
+      transform: rotate(.45deg);
+    }
+
+    .project:nth-of-type(odd) .project-media {
+      transform: rotate(-.35deg);
+    }
+
+    .project-media:hover {
+      transform: translateY(-5px) rotate(0deg) !important;
+      box-shadow: 0 22px 52px rgba(53, 65, 68, 0.14);
+    }
+
+    .project-media img {
+      width: 100%;
+      aspect-ratio: 16 / 10;
+      object-fit: cover;
+      background: #d5dddd;
+    }
+
+    .vimeo-video {
+      position: relative;
+      width: 100%;
+      aspect-ratio: 4 / 3;
+      overflow: hidden;
+      background: #d5dddd;
+    }
+
+    .vimeo-video iframe {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      border: 0;
+    }
+
+    .project-media figcaption {
+      padding-top: 10px;
+      color: var(--ink-soft);
+      font-family: var(--mono);
+      font-size: .62rem;
+      letter-spacing: .03em;
+      text-transform: lowercase;
+    }
+
+    .project-copy {
+      align-self: end;
+      max-width: 480px;
+      padding-bottom: 10px;
+    }
+
+    .project-copy > p:last-child {
+      margin: 0;
+      color: #465255;
+      font-size: .87rem;
+    }
+
+    .project-kicker {
+      margin: 0 0 22px;
+      color: var(--blue-gray-deep);
+    }
+
+    .project-copy--split {
+      align-self: stretch;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 30px;
+    }
+
+    .credits-card {
+      padding: 20px;
+      background: rgba(220, 227, 228, .72);
+      border-left: 2px solid var(--blue-gray-deep);
+      font-family: var(--mono);
+      font-size: .67rem;
+      line-height: 1.55;
+    }
+
+    .credits-card p {
+      margin: 0 0 10px;
+    }
+
+    .credits-card p:last-child {
+      margin-bottom: 0;
+    }
+
+    .site-footer {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto auto;
+      gap: 28px;
+      align-items: end;
+      padding: 30px 0 36px;
+      border-top: 1px solid var(--line);
+      font-family: var(--mono);
+      font-size: .67rem;
+      letter-spacing: .06em;
+      text-transform: uppercase;
+    }
+
+    .footer-label {
+      display: block;
+      margin-bottom: 6px;
+      color: var(--blue-gray-deep);
+    }
+
+    .site-footer p {
+      margin: 0;
+      color: var(--ink-soft);
+    }
+
+    @keyframes rise-in {
+      from { opacity: 0; transform: translateY(14px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes float-card {
+      0%, 100% { transform: rotate(1.4deg) translateY(0); }
+      50% { transform: rotate(.8deg) translateY(-6px); }
+    }
+
+    /* TABLET */
+    @media (max-width: 900px) {
+      .site-header,
+      main,
+      .site-footer {
+        width: min(100% - 32px, 760px);
+      }
+
+      .hero-shell,
+      .about-grid,
+      .project {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-shell {
+        min-height: auto;
+        gap: 56px;
+      }
+
+      .hero-card {
+        justify-self: start;
+        width: min(360px, 88%);
+      }
+
+      .about-grid {
+        gap: 44px;
+      }
+
+      .about-note {
+        margin-inline: auto;
+      }
+
+      .about-side {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .project-copy {
+        max-width: 690px;
+      }
+
+      .project-title--single-line {
+        white-space: normal;
+      }
+    }
+
+    /* PHONE */
+    @media (max-width: 640px) {
+      .site-header,
+      main,
+      .site-footer {
+        width: min(100% - 24px, 1180px);
+      }
+
+      .site-header {
+        padding-top: 10px;
+      }
+
+      .topbar {
+        min-height: 54px;
+        gap: 12px;
+      }
+
+      .wordmark span {
+        display: none;
+      }
+
+      .brand-logo {
+        width: 34px;
+        height: 34px;
+      }
+
+      .nav-links {
+        margin-left: auto;
+        gap: 15px;
+        font-size: .66rem;
+        letter-spacing: .08em;
+      }
+
+      .hero-shell {
+        padding: 68px 0 84px;
+        gap: 48px;
+      }
+
+      .hero-copy h1 {
+        font-size: clamp(4rem, 24vw, 6.4rem);
+        line-height: .82;
+      }
+
+      .hero-intro {
+        margin-top: 34px;
+        font-size: .9rem;
+      }
+
+      .hero-intro br {
+        display: none;
+      }
+
+      .hero-card {
+        width: min(330px, 92%);
+        min-height: 300px;
+      }
+
+      .about-section,
+      .work-section {
+        padding-bottom: 88px;
+      }
+
+      .about-grid {
+        gap: 30px;
+      }
+
+      .about-note {
+        width: 100%;
+        margin-left: 0;
+      }
+
+      .about-note__text {
+        left: 14%;
+        right: 14%;
+        top: 42%;
+        font-size: clamp(.59rem, 2.45vw, .74rem);
+        line-height: 1.42;
+      }
+
+      .about-note__text p {
+        margin-bottom: .6em;
+      }
+
+      .typed-small {
+        margin-bottom: .6em !important;
+      }
+
+      .about-side {
+        grid-template-columns: 1fr;
+        gap: 16px;
+      }
+
+      .mini-card {
+        padding: 20px;
+      }
+
+      .project {
+        padding-top: 34px;
+        padding-bottom: 82px;
+        row-gap: 24px;
+      }
+
+      .project-topline {
+        grid-template-columns: 38px minmax(0, 1fr);
+        gap: 10px;
+      }
+
+      .project-number {
+        padding-top: .5em;
+      }
+
+      .project h3,
+      .project-title--single-line {
+        white-space: normal;
+        font-size: clamp(2rem, 11vw, 3rem) !important;
+        line-height: .95;
+      }
+
+      .meta {
+        margin-top: 12px;
+        font-size: .66rem;
+        line-height: 1.55;
+        letter-spacing: .055em;
+        overflow-wrap: anywhere;
+      }
+
+      .project-media {
+        padding: 10px 10px 8px;
+        margin-top: 8px;
+      }
+
+      .project-media::before {
+        width: 70px;
+        height: 24px;
+        top: -11px;
+      }
+
+      .project-copy {
+        max-width: 100%;
+        padding-bottom: 0;
+      }
+
+      .project-copy > p:last-child {
+        font-size: .82rem;
+        line-height: 1.62;
+      }
+
+      .project-kicker {
+        margin-bottom: 16px;
+      }
+
+      .credits-card {
+        padding: 16px;
+        font-size: .63rem;
+      }
+
+      .site-footer {
+        grid-template-columns: 1fr auto;
+        gap: 16px;
+      }
+
+      .site-footer > p {
+        grid-column: 1 / -1;
+        grid-row: 2;
+      }
+    }
+
+    /* VERY SMALL PHONES */
+    @media (max-width: 390px) {
+      .nav-links {
+        gap: 10px;
+        font-size: .61rem;
+      }
+
+      .hero-copy h1 {
+        font-size: clamp(3.7rem, 23vw, 5.4rem);
+      }
+
+      .about-note__text {
+        left: 13.5%;
+        right: 13.5%;
+        top: 41.5%;
+        font-size: clamp(.56rem, 2.35vw, .67rem);
+      }
+
+      .project h3,
+      .project-title--single-line {
+        font-size: clamp(1.85rem, 10.8vw, 2.65rem) !important;
+      }
+
+      .site-footer {
+        font-size: .6rem;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html {
+        scroll-behavior: auto;
+      }
+
+      *,
+      *::before,
+      *::after {
+        animation: none !important;
+        transition: none !important;
+      }
+    }
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#work">Skip to projects</a>
+
+  <header class="site-header" id="top">
+    <nav class="topbar" aria-label="Primary navigation">
+      <a class="wordmark" href="#top">
+        <img class="brand-logo" src="Media/logo.svg" alt="Annie Cheng logo">
+        <span>AC / PORTFOLIO</span>
+      </a>
+
+      <div class="nav-links">
+        <a href="#about">About</a>
+        <a href="#work">Work</a>
+        <a href="mailto:anniecheng0607@gmail.com">Contact</a>
+      </div>
+    </nav>
+
+    <div class="hero-shell">
+      <div class="hero-copy">
+        <p class="eyebrow">DESIGNER · STORYTELLER · MAKER</p>
+        <h1>Annie<br>Cheng</h1>
+        <p class="hero-intro">
+          Film &amp; Media Studies at UC Santa Barbara,<br>
+          with minors in Theater Production &amp; Design<br>
+          and Media Arts &amp; Design.
+        </p>
+        <a class="paper-link" href="#work">↓ view selected work</a>
+      </div>
+
+      <aside class="hero-card" aria-label="Portfolio index card">
+        <span class="hero-card__label">FILE / 2026</span>
+        <p>SCENIC DESIGN</p>
+        <p>IMMERSIVE MEDIA</p>
+        <p>VISUAL STORYTELLING</p>
+        <span class="hero-card__stamp">ANNIE<br>CHENG</span>
+      </aside>
+    </div>
+  </header>
+
+  <main>
+    <section class="about-section" id="about">
+      <div class="section-label">01 / ABOUT</div>
+
+      <div class="about-grid">
+        <div class="about-note">
+          <img src="Media/about-paper.png" alt="Beige paper tag tied with twine">
+          <div class="about-note__text">
+            <p class="typed-small">hello —</p>
+            <p>
+              I’m Annie. I study Film &amp; Media Studies at UC Santa Barbara, with minors in Theater Production &amp; Design and Media Arts &amp; Design.
+            </p>
+            <p>
+              My work moves between scenic design, VR environments, and visual storytelling.
+            </p>
+          </div>
+        </div>
+
+        <div class="about-side">
+          <div class="mini-card mini-card--blue">
+            <span>FOCUS</span>
+            <strong>space / atmosphere / interaction</strong>
+          </div>
+
+          <div class="mini-card mini-card--gray">
+            <span>WORKING ACROSS</span>
+            <strong>theater + film + immersive media</strong>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="work-section" id="work">
+      <article class="project">
+        <div class="project-topline">
+          <span class="project-number">01</span>
+          <div>
+            <h3 class="project-title--single-line">Blithe Spirit — Scenic Design</h3>
+            <p class="meta">THEATRICAL SCENIC DESIGN · 2025 · INDEPENDENT · ANNIE CHENG</p>
+          </div>
+        </div>
+
+        <figure class="project-media">
+          <img src="Media/cheng_blithespirit_11.png" alt="Scenic Design Final Model">
+          <figcaption>Scenic Design Final Model.</figcaption>
+        </figure>
+
+        <div class="project-copy">
+          <p class="project-kicker">SCENE / ATMOSPHERE / MOVEMENT</p>
+          <p>
+            This is a scenic design for Noel Coward's <em>Blithe Spirit</em>, exploring the contrast between everyday domestic life and the supernatural presence of ghosts. Design research drew on 1940s British domestic interiors, Art Deco and postwar utility furniture. The design willing to build an elegant, orderly living room whose broken objects, shifting light and spatial openness between reality and the supernatural. I reimagined the traditional enclosed living room as a more open, layered space with large windows and French doors so the ghost character Elvira, could move fluidly between interior and the outside garden.
+          </p>
+        </div>
+      </article>
+
+      <article class="project">
+        <div class="project-topline">
+          <span class="project-number">02</span>
+          <div>
+            <h3>VR Universal Century Museum:<br>Space Exploration Commemoration</h3>
+            <p class="meta">VR INTERACTIVE 3D ENVIRONMENT · UNITY + META QUEST 3 · 2025 · GROUP WORK</p>
+          </div>
+        </div>
+
+        <figure class="project-media">
+          <div class="vimeo-video">
+            <iframe
+              src="https://player.vimeo.com/video/1220082797?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479"
+              allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share"
+              referrerpolicy="strict-origin-when-cross-origin"
+              allowfullscreen
+              title="cheng_gundam_26">
+            </iframe>
+          </div>
+          <figcaption>Raw walkthrough recording, exhibit hall + window view.</figcaption>
+        </figure>
+
+        <div class="project-copy project-copy--split">
+          <div class="credits-card">
+            <p><strong>Spike Rao</strong> — Creative Director, VR Development, 3D Model Integration, Interaction Design</p>
+            <p><strong>*Annie Cheng</strong> — Scene Design, Audio Narration, Photo &amp; Video Assets, Lighting Setup</p>
+            <p><strong>Aliston Ma</strong> — Concept Art, Storyboard, Tester, Exhibit Narrator</p>
+          </div>
+          <p>
+            The VR Universal Century Museum is an immersive Meta Quest 3 exhibition set immediately after the One Year War in the Mobile Suit Gundam timeline. Visitors walk through a photo gallery documenting humanity's migration from Earth to the space colonies, then enter a 3D exhibition hall featuring iconic mobile suits (RX-78-2 Gundam, MS-06 Zaku II) and spacecraft. The entie scene was built in Unity and integrated with XR interaction. The work aims to provide the audience with a completely new world experience through triggered narration, video playback, and object picking interactions, as well as information output.
+          </p>
+        </div>
+      </article>
+
+      <article class="project">
+        <div class="project-topline">
+          <span class="project-number">03</span>
+          <div>
+            <h3>Seasoned</h3>
+            <p class="meta">VR INTERACTIVE 3D ENVIRONMENT · UNITY + META QUEST 3 · 2026 · GROUP WORK</p>
+          </div>
+        </div>
+
+        <figure class="project-media">
+          <img src="Media/cheng_seasonsgarden_01.png" alt="Model Screenshot">
+          <figcaption>Vectorworks model making.</figcaption>
+        </figure>
+
+        <div class="project-copy">
+          <p class="project-kicker">GARDEN / SEASONS / DISCOVERY</p>
+          <p>
+            The VR environment is a classical principle of Chinese garden design — that a garden should never be seen all at once, but discovered gradually as the visitor moves through it. This VR experience reimagines that idea for immersive media. It creates a traditional Chinese courtyard garden — pavilions, a covered corridor, a moon gate and so on. At the same time, the season shifts around them, from spring blossoms to summer shade, autumn color and winter snow. A observational storyline gives a gentle narrative thread. The project builds directly on my earlier Vectorworks landscape model, extending it from a static 3D render into a walkable, seasonally responsive real-time environment.
+          </p>
+        </div>
+      </article>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div>
+      <span class="footer-label">CONTACT</span>
+      <a href="mailto:anniecheng0607@gmail.com">anniecheng0607@gmail.com</a>
+    </div>
+    <p>ANNIE CHENG · PORTFOLIO · 2026</p>
+    <a href="#top">↑ TOP</a>
+  </footer>
+</body>
+</html>
